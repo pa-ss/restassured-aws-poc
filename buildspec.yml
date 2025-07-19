@@ -21,7 +21,9 @@ phases:
       - cp -r target/site/allure-maven-plugin/* allure-report-output/
 artifacts:
   files:
-    - allure-report-output/**/*
+    - allure-report-output/**/*   # ✅ This matches the folder you copied into
+  name: allure-artifacts          # Optional - customize artifact zip name
+  discard-paths: no               # Keep directory structure (recommended)
 
 reports:
   allure-report:
