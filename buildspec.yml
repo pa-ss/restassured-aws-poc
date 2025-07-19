@@ -17,8 +17,12 @@ phases:
       - mvn clean test
       - echo Generating Allure Report...
       - mvn allure:report
+     - echo "Listing Allure report directory:"
+      - ls -R target/site/allure-maven-plugin || echo "Report folder not found"
       - mkdir -p allure-report-output
       - cp -r target/site/allure-maven-plugin/* allure-report-output/
+
+
 artifacts:
   files:
     - allure-report-output/**/*   # ✅ This matches the folder you copied into
