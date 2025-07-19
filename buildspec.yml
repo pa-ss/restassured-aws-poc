@@ -22,7 +22,7 @@ phases:
 artifacts:
   files:
     - allure-report-output/**/*   # ✅ This matches the folder you copied into
-  name: allure-artifacts          # Optional - customize artifact zip name
+  name: BuildArtif          # Optional - customize artifact zip name
   discard-paths: no               # Keep directory structure (recommended)
 
 reports:
