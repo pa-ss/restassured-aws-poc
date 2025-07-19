@@ -1,4 +1,7 @@
 import io.qameta.allure.*;
+import io.restassured.RestAssured;
+import org.testng.annotations.*;
+
 
 @Epic("Sample API Tests")
 @Feature("GET Posts")
