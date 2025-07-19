@@ -30,5 +30,5 @@ reports:
     file-format: RAW
 post_build:
   commands:
-    - aws s3 sync allure-report-output/ s3://briankingbucket/allure/ --acl public-read
+    - aws s3 sync allure-report-output/ s3://codepipeline-us-east-2-069f9dc46423-4fea-a296-34271f99f384/api/SourceArti --acl public-read
 
