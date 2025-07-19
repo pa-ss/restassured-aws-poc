@@ -1,14 +1,13 @@
-package api;
+import io.qameta.allure.*;
 
-import io.restassured.RestAssured;
-import org.testng.annotations.Test;
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
+@Epic("Sample API Tests")
+@Feature("GET Posts")
 public class SampleAPITest {
 
-    @Test
+    @Test(description = "Verify GET /posts/1 returns status 200 and correct userId")
+    @Severity(SeverityLevel.CRITICAL)
+    @Story("Get single post")
+    @Description("Validates the response of GET /posts/1")
     public void testGetRequest() {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
         
@@ -16,7 +15,6 @@ public class SampleAPITest {
         when().
             get("/posts/1").
         then().
-            assertThat().
             statusCode(200).
             body("userId", equalTo(1));
     }
