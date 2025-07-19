@@ -5,12 +5,26 @@ phases:
     runtime-versions:
       java: corretto17
     commands:
-      - echo Installing Maven...
+      - echo Installing Maven and Allure CLI...
       - yum install -y maven
+      - curl -o allure-2.27.0.tgz -L https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+      - tar -xvzf allure-2.27.0.tgz
+      - mv allure-2.27.0 /opt/allure
+      - ln -s /opt/allure/bin/allure /usr/bin/allure
   build:
     commands:
-      - echo Running RestAssured Tests...
+      - echo Running tests...
       - mvn clean test
+      - echo Generating Allure Report...
+      - mvn allure:report
+      - mkdir -p allure-report-output
+      - cp -r target/site/allure-maven-plugin/* allure-report-output/
 artifacts:
   files:
-    - target/surefire-reports/*
+    - allure-report-output/**/*
+
+reports:
+  allure-report:
+    files:
+      - "allure-report-output/index.html"
+    file-format: RAW
