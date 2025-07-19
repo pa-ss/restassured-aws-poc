@@ -1,7 +1,8 @@
 import io.qameta.allure.*;
 import io.restassured.RestAssured;
 import org.testng.annotations.*;
-
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 @Epic("Sample API Tests")
 @Feature("GET Posts")
