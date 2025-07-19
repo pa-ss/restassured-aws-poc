@@ -28,3 +28,7 @@ reports:
     files:
       - "allure-report-output/index.html"
     file-format: RAW
+post_build:
+  commands:
+    - aws s3 sync allure-report-output/ s3://briankingbucket/allure/ --acl public-read
+
